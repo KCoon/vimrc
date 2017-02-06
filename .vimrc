@@ -13,6 +13,7 @@ endif
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Blevs/vim-dzo'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
