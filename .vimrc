@@ -82,15 +82,27 @@ set splitright
 "toolbar
 set guioptions-=T
 "menue
-set guioptions-=m
+set guioptions+=m
 "scrollbar right
 set guioptions-=r
 "scrollbar left
 set guioptions-=L
 
+"Powerline
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+set laststatus=2
+
 "font
 if has('win32')
-  set guifont=Monaco:h11
+  "set guifont=Monaco:h10
+  "set guifont=Anonymice\ Powerline:h11
+  "set guifont=Ubuntu_Mono_derivative_Powerlin:h10
+  "set guifont=Monaco_for_Powerline:h11
+  set guifont=Sauce\ Code\ Powerline:h11
+  "set guifont=Monaco\ for\ Powerline:h11
+  "set renderoptions=type:directx,renmode:5
 else
   set guifont=Monaco\ 11
 endif
@@ -109,4 +121,5 @@ nnoremap <F9> :YcmCompleter GetDoc<CR>
 
 "Doxygen
 command! Doxygen !doxygen ..\docu\doxyfile
+
 
