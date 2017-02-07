@@ -7,3 +7,6 @@
 [submodule "vimfiles/bundle/Vundle.vim"]
 	path = vimfiles/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule "vimfiles/bundle/vim-dzo"]
+	path = vimfiles/bundle/vim-dzo
+	url = https://github.com/Blevs/vim-dzo.git
