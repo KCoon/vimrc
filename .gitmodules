@@ -10,3 +10,6 @@
 [submodule "vimfiles/bundle/vim-dzo"]
 	path = vimfiles/bundle/vim-dzo
 	url = https://github.com/Blevs/vim-dzo.git
+[submodule "vimfiles/bundle/vim-markdown-toc"]
+	path = vimfiles/bundle/vim-markdown-toc
+	url = https://github.com/mzlogin/vim-markdown-toc
