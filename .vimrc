@@ -15,6 +15,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Blevs/vim-dzo'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
+Plugin 'mzlogin/vim-markdown-toc'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -44,22 +45,24 @@ set autochdir
 set ic
 set backspace=2
 set background=dark
-set laststatus=2
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
-
+set listchars=eol:⏎,tab:>-,space:.
 let mapleader = "\\"
-
+set ff=unix
+set fileformats=unix
+set autoread
+  
 "Tabs default
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set expandtab
+set noexpandtab
+autocmd FileType c,cpp,python :set expandtab
 "/Tabs default
 
 "Tabs Python
-autocmd BufNewFile,BufRead *.py set tabstop=4
-autocmd BufNewFile,BufRead *.py set softtabstop=4
-autocmd BufNewFile,BufRead *.py set shiftwidth=4
+autocmd FileType python :set tabstop=4
+autocmd FileType python :set softtabstop=4
+autocmd FileType python :set shiftwidth=4
 
 "Color
 if has('gui_running')
@@ -73,12 +76,17 @@ syntax on
 set foldmethod=syntax
 autocmd BufNewFile,BufRead *.py set foldmethod=indent
 set foldlevel=2
-"set hlsearch
+set hlsearch
 set ignorecase
 set smartcase
 set autoindent
 set ruler
 set splitright
+
+"avoid accidentlly entering visual mode by selecting text with mouse
+"to select text by mouse press <shift>
+"noremap <LeftDrag> <LeftMouse>
+"noremap! <LeftDrag> <LeftMouse>
 
 
 "toolbar
@@ -103,6 +111,8 @@ endif
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
+set laststatus=2
+set noshowmode
 "/Powerline
 
 "Commands
@@ -111,14 +121,30 @@ command! -nargs=1 -range=% Numberf <line1>,<line2>s/^/\=printf(<args>, line('.')
 command! -nargs=0 -range=% Nonumber <line1>,<line2>s/^\s*\d*\s*/
 "/Commands
 
+"Autocommands
+"remove trailing whitespaces
+autocmd FileType c,cpp,python autocmd BufWritePre <buffer> %s/\s\+$//e
+"Autocommands
+
 "Shortcuts
 autocmd FileType python,cpp nnoremap <F2> :cd ..\docu \| !doxygen \| cd ..\src<CR>
 autocmd FileType python,cpp nnoremap <F3> :!..\docu\html\index.html<CR>
 if has('win32')
-  autocmd FileType python nnoremap <F5> :!python % 5<CR>
+  autocmd FileType python nnoremap <F4> :w \| !C:\Python27\python.exe %<CR>
+  autocmd FileType python inoremap <F4> <ESC>:w \| !C:\Python27\python.exe %<CR>
+  autocmd FileType python nnoremap <F5> :w \| !python %<CR>
+  autocmd FileType python inoremap <F5> <ESC>:w \| !python %<CR>
+  autocmd FileType python nnoremap <F6> :w \| !ipython %<CR>
+  autocmd FileType python inoremap <F6> <ESC>:w \| !ipython %<CR>
 else
-  autocmd FileType python nnoremap <F5> :w \| !python3 % 5<CR>
+  autocmd FileType python nnoremap <F5> :w \| !python3 %<CR>
+  autocmd FileType python inoremap <F5> <ESC>:w \| !python3 %<CR>
 endif
 nnoremap <F9> :YcmCompleter GetDoc<CR>
+autocmd FileType python nnoremap <F12> :silent !python -m autopep8 -i %<CR>
+autocmd FileType python nnoremap <S-F12> :!python -m autopep8 -d %<CR>
 "/Shortcuts
 
+"Snippets
+autocmd BufNewFile *.py 0r ~/vimfiles/templates/skeleton.py
+"/Snippets

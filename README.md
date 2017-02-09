@@ -1,19 +1,41 @@
 # vimrc
 only my vim config
 
+
+<!-- vim-markdown-toc GFM -->
+* [Shortcuts](#shortcuts)
+  * [Python](#python)
+  * [C++](#c)
+* [Commands](#commands)
+* [Plugins](#plugins)
+  * [Vundle](#vundle)
+  * [dzo](#dzo)
+  * [YouCompleteMe](#youcompleteme)
+  * [fugitive](#fugitive)
+  * [vim-markdown-toc](#vim-markdown-toc)
+
+<!-- vim-markdown-toc -->
+
 ## Shortcuts
-### General
 
 ### Python
 `<F2>` Doxygen
 
 `<F3>` Show Doxygen HTML-Docu in Default-Browser
 
-`<F5>` Run
+`<F4>` Run Python2.7
+
+`<F5>` Run Python3.6
+
+`<F6>` Run IPython5.2 (Python3.6)
 
 `<F9>` GetDoc
 
-### C/C++
+`<F12>` Beautify with AutoPep8
+
+`<S-F12>` Show AutoPep8 diff
+
+### C++
 `<F2>` Doxygen
 
 `<F3>` Show Doxygen HTML-Docu in Default-Browser
@@ -27,8 +49,52 @@ only my vim config
 `<F9>` GetDoc
 
 ## Commands
-command | description
---------|------------
-Number | Numbering lines of file
+command          | description
+-----------------|------------
+Number           | Numbering lines of file
 Numberf <format> | Numbering lines of file with given format <br />e.g. Numberf "N%04d "
-Nonumber | Removes numbering. Works only for digits only formats
+Nonumber         | Removes numbering. Works only for digits only formats
+
+
+## Plugins
+
+### Vundle
+
+Plugin manager for vim  (https://github.com/VundleVim/Vundle.vim)
+
+### dzo
+A dark color scheme for vim (https://github.com/Blevs/vim-dzo)
+
+### YouCompleteMe
+A code-completion engine for Vim (https://github.com/Valloric/YouCompleteMe)
+
+To trigger semantic completion without language depending triggers like `.` or `->` press `<S-BAR>`.
+
+### fugitive
+Git wrapper for vim (https://github.com/tpope/vim-fugitive)
+
+fugitive cmd         | git cmd
+---------------------|---------
+`:Gwrite`            | Git add %
+`:Gread`             | Git checkout %
+`:Gremove`           | Git rm %
+`:Gmove target_path` | Git mv % target\_path. target\_path is relative to %.<br>If used /target\_path, / is the root of the repository
+`:Gcommit`           | Git commit. Opens horizontal split buffer for commit message
+`:Gblame`            | Git blame %. Opens vertical split showing who edited which line when.
+
+### vim-markdown-toc
+
+Autogenerate table of contents in markdown files. (see https://github.com/mzlogin/vim-markdown-toc )
+
+Place cursor to position where to append toc.
+
+`:GenTocGFM`   
+Generate table of contents in github flavoured markdown.
+
+`:GenTocRedcarpet`  
+Generate table of contents in redcarped style markdown.
+
+Toc will auto updated when saving file.
+
+
+
