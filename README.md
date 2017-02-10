@@ -13,6 +13,8 @@ only my vim config
   * [YouCompleteMe](#youcompleteme)
   * [fugitive](#fugitive)
   * [vim-markdown-toc](#vim-markdown-toc)
+  * [UltiSnips](#ultisnips)
+  * [vim-snippets](#vim-snippets)
 
 <!-- vim-markdown-toc -->
 
@@ -96,5 +98,24 @@ Generate table of contents in redcarped style markdown.
 
 Toc will auto updated when saving file.
 
+### UltiSnips
 
+Snippet engine for vim. (https://github.com/SirVer/ultisnips)
+
+This plugin works nicely with YouCompleteMe but the default key configuration has to be changed to avoid collion with YCM. The
+following config works great with neo-layout (http://neo-layout.org)
+
+`<c-tab>` list all snippets for current language
+
+`<right>` expand snippet
+
+`<right>` after expand, jump forwart
+
+`<left>` after expand, jump backward
+
+If you don't use neo (for whatever reason), use `<c-j>` and `<c-k>` in place of the arrow keys.
+
+### vim-snippets
+
+Provided snippet files used by UltiSnips (https://github.com/honza/vim-snippets)
 

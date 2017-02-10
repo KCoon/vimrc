@@ -16,10 +16,20 @@ Plugin 'Blevs/vim-dzo'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mzlogin/vim-markdown-toc'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 "/Vundle
+
+"ultisnips
+"Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsUsePythonVersion=2
+let g:UltiSnipsExpandTrigger='<RIGHT>'
+let g:UltiSnipsJumpForwardTrigger='<RIGHT>'
+let g:UltiSnipsJumpBackwardTrigger='<LEFT>'
+"/ultisnips
 
 "YouCompleteMe
 let g:enable_ycm_at_startup = 0
@@ -40,6 +50,7 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 autocmd BufNewFile, BufRead *.cc setfiletype cpp
 "/YouCompleteMe
 
+
 set number
 set autochdir
 set ic
@@ -47,8 +58,13 @@ set backspace=2
 set background=dark
 set listchars=eol:⏎,tab:>-,space:.
 let mapleader = "\\"
-set ff=unix
-set fileformats=unix
+if has('win32')
+	set ff=dos
+	set fileformats=dos
+else
+	set ff=unix
+	set fileformats=unix
+endif
 set autoread
   
 "Tabs default
