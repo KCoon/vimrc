@@ -1,7 +1,7 @@
 set encoding=utf-8      "required for powerline
 
 "Vundle
-set nocompatible        " be iMproved, required for vundle
+set nocompatible        " be improved, required for vundle
 filetype off            " required for vundle 
 if has('win32')
   set rtp+=$HOME/vimfiles/bundle/Vundle.vim
@@ -23,13 +23,13 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 "/Vundle
 
-"ultisnips
+"Ultisnips
 "Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsUsePythonVersion=2
-let g:UltiSnipsExpandTrigger='<RIGHT>'
+let g:UltiSnipsExpandTrigger='<s-cr>'
 let g:UltiSnipsJumpForwardTrigger='<RIGHT>'
 let g:UltiSnipsJumpBackwardTrigger='<LEFT>'
-"/ultisnips
+"/Ultisnips
 
 "YouCompleteMe
 let g:enable_ycm_at_startup = 0
@@ -66,6 +66,7 @@ else
 	set fileformats=unix
 endif
 set autoread
+set spelllang=en_gb
   
 "Tabs default
 set tabstop=2
@@ -80,14 +81,15 @@ autocmd FileType python :set tabstop=4
 autocmd FileType python :set softtabstop=4
 autocmd FileType python :set shiftwidth=4
 
-"Color
+"Colour
 if has('gui_running')
   colorscheme dzo
 else
   colorscheme evening
 endif
-"/Color
-"
+"/Colour
+
+
 syntax on
 set foldmethod=syntax
 autocmd BufNewFile,BufRead *.py set foldmethod=indent
@@ -98,16 +100,18 @@ set smartcase
 set autoindent
 set ruler
 set splitright
-
-"avoid accidentlly entering visual mode by selecting text with mouse
-"to select text by mouse press <shift>
-"noremap <LeftDrag> <LeftMouse>
-"noremap! <LeftDrag> <LeftMouse>
-
+hi clear SpellBad
+hi clear SpellCap
+hi clear SpellLocal
+hi clear SpellRare
+hi SpellBad gui=undercurl guisp=red
+hi SpellCap gui=undercurl guisp=green
+hi SpellLocal gui=undercurl guisp=violet
+hi SpellLocal gui=undercurl guisp=violet
 
 "toolbar
 set guioptions-=T
-"menue
+"menu
 set guioptions-=m
 "scrollbar right
 set guioptions-=r
@@ -137,10 +141,10 @@ command! -nargs=1 -range=% Numberf <line1>,<line2>s/^/\=printf(<args>, line('.')
 command! -nargs=0 -range=% Nonumber <line1>,<line2>s/^\s*\d*\s*/
 "/Commands
 
-"Autocommands
-"remove trailing whitespaces
+"Auto commands
+"remove trailing white s paces
 autocmd FileType c,cpp,python autocmd BufWritePre <buffer> %s/\s\+$//e
-"Autocommands
+"Auto commands
 
 "Shortcuts
 autocmd FileType python,cpp nnoremap <F2> :cd ..\docu \| !doxygen \| cd ..\src<CR>
@@ -164,3 +168,4 @@ autocmd FileType python nnoremap <S-F12> :!python -m autopep8 -d %<CR>
 "Snippets
 autocmd BufNewFile *.py 0r ~/vimfiles/templates/skeleton.py
 "/Snippets
+

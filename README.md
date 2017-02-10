@@ -105,13 +105,13 @@ Snippet engine for vim. (https://github.com/SirVer/ultisnips)
 This plugin works nicely with YouCompleteMe but the default key configuration has to be changed to avoid collion with YCM. The
 following config works great with neo-layout (http://neo-layout.org)
 
-`<c-tab>` list all snippets for current language
+`<C-Tab>` list all snippets for current language
 
-`<right>` expand snippet
+`<S-CR>` expand snippet
 
-`<right>` after expand, jump forwart
+`<Right>` after expand, jump forwart
 
-`<left>` after expand, jump backward
+`<Left>` after expand, jump backward
 
 If you don't use neo (for whatever reason), use `<c-j>` and `<c-k>` in place of the arrow keys.
 
