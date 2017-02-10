@@ -3,7 +3,7 @@ set encoding=utf-8      "required for powerline
 "Vundle
 set nocompatible        " be improved, required for vundle
 filetype off            " required for vundle 
-if has('win32')
+if has('windows')
   set rtp+=$HOME/vimfiles/bundle/Vundle.vim
   call vundle#begin('$HOME/vimfiles/bundle/')
 else
@@ -33,14 +33,14 @@ let g:UltiSnipsJumpBackwardTrigger='<LEFT>'
 
 "YouCompleteMe
 let g:enable_ycm_at_startup = 0
-if has('win32')
+if has('windows')
   let g:ycm_python_binary_path = 'C:\python36\python.exe'
 else
   let g:ycm_python_binary_path = '/usr/bin/python3'
 endif
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
-if has('win32')
+if has('windows')
   let g:ycm_global_ycm_extra_conf = '~\vimfiles\.ycm_extra_conf.py'
 else
   let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
@@ -58,7 +58,7 @@ set backspace=2
 set background=dark
 set listchars=eol:⏎,tab:>-,space:.
 let mapleader = "\\"
-if has('win32')
+if has('windows')
 	set ff=dos
 	set fileformats=dos
 else
@@ -119,7 +119,7 @@ set guioptions-=r
 set guioptions-=L
 
 "font
-if has('win32')
+if has('windows')
   set guifont=Monaco\ for\ Powerline:h9
   set renderoptions=type:directx,renmode:5
 else
@@ -149,7 +149,7 @@ autocmd FileType c,cpp,python autocmd BufWritePre <buffer> %s/\s\+$//e
 "Shortcuts
 autocmd FileType python,cpp nnoremap <F2> :cd ..\docu \| !doxygen \| cd ..\src<CR>
 autocmd FileType python,cpp nnoremap <F3> :!..\docu\html\index.html<CR>
-if has('win32')
+if has('windows')
   autocmd FileType python nnoremap <F4> :w \| !C:\Python27\python.exe %<CR>
   autocmd FileType python inoremap <F4> <ESC>:w \| !C:\Python27\python.exe %<CR>
   autocmd FileType python nnoremap <F5> :w \| !python %<CR>
@@ -168,4 +168,3 @@ autocmd FileType python nnoremap <S-F12> :!python -m autopep8 -d %<CR>
 "Snippets
 autocmd BufNewFile *.py 0r ~/vimfiles/templates/skeleton.py
 "/Snippets
-
