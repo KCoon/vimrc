@@ -1,3 +1,6 @@
+set encoding=utf-8
+
+"Vundle
 set nocompatible        " be improved, required for vundle
 filetype off            " required for vundle 
 if has('win32')
@@ -57,13 +60,6 @@ set backspace=2
 set background=dark
 set listchars=eol:⏎,tab:>-,space:.
 let mapleader = "\\"
-"if has('win32')
-"	set ff=dos
-"	set fileformats=dos
-"else
-"	set ff=unix
-"	set fileformats=unix
-"endif
 set mouse=a
 set autoread
 set spelllang=en_gb
