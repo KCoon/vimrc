@@ -25,9 +25,6 @@ filetype plugin indent on    " required
 
 "Ultisnips
 "Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsUsePythonVersion=2
-imap <C-e> <Nop>
-imap <C-i> <Nop>
 let g:UltiSnipsExpandTrigger='<C-RIGHT>'
 let g:UltiSnipsJumpForwardTrigger='<RIGHT>'
 let g:UltiSnipsJumpBackwardTrigger='<LEFT>'
