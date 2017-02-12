@@ -4,6 +4,7 @@
 [submodule "vimfiles/bundle/YouCompleteMe"]
 	path = vimfiles/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
+	ignore = dirty
 [submodule "vimfiles/bundle/Vundle.vim"]
 	path = vimfiles/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
@@ -19,3 +20,4 @@
 [submodule "vimfiles/bundle/vim-snippets"]
 	path = vimfiles/bundle/vim-snippets
 	url = https://github.com/honza/vim-snippets
+	
