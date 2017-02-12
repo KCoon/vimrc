@@ -1,9 +1,6 @@
-set encoding=utf-8      "required for powerline
-
-"Vundle
 set nocompatible        " be improved, required for vundle
 filetype off            " required for vundle 
-if has('windows')
+if has('win32')
   set rtp+=$HOME/vimfiles/bundle/Vundle.vim
   call vundle#begin('$HOME/vimfiles/bundle/')
 else
@@ -25,22 +22,24 @@ filetype plugin indent on    " required
 
 "Ultisnips
 "Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsUsePythonVersion=2
-let g:UltiSnipsExpandTrigger='<s-cr>'
+"let g:UltiSnipsUsePythonVersion=2
+imap <C-e> <Nop>
+imap <C-i> <Nop>
+let g:UltiSnipsExpandTrigger='<C-RIGHT>'
 let g:UltiSnipsJumpForwardTrigger='<RIGHT>'
 let g:UltiSnipsJumpBackwardTrigger='<LEFT>'
 "/Ultisnips
 
 "YouCompleteMe
 let g:enable_ycm_at_startup = 0
-if has('windows')
+if has('win32')
   let g:ycm_python_binary_path = 'C:\python36\python.exe'
 else
   let g:ycm_python_binary_path = '/usr/bin/python3'
 endif
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
-if has('windows')
+if has('win32')
   let g:ycm_global_ycm_extra_conf = '~\vimfiles\.ycm_extra_conf.py'
 else
   let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
@@ -58,13 +57,14 @@ set backspace=2
 set background=dark
 set listchars=eol:⏎,tab:>-,space:.
 let mapleader = "\\"
-if has('windows')
-	set ff=dos
-	set fileformats=dos
-else
-	set ff=unix
-	set fileformats=unix
-endif
+"if has('win32')
+"	set ff=dos
+"	set fileformats=dos
+"else
+"	set ff=unix
+"	set fileformats=unix
+"endif
+set mouse=a
 set autoread
 set spelllang=en_gb
   
@@ -119,18 +119,25 @@ set guioptions-=r
 set guioptions-=L
 
 "font
-if has('windows')
+if has('win32')
   set guifont=Monaco\ for\ Powerline:h9
   set renderoptions=type:directx,renmode:5
 else
-  set guifont=Monaco\ 11
+  "set guifont=Monaco\ 11
+	set guifont=Monaco\ for\ Powerline\ 9
 endif
 "/font
 
 "Powerline
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+if has ('win32')
+  python from powerline.vim import setup as powerline_setup
+  python powerline_setup()
+  python del powerline_setup
+else
+  python3 from powerline.vim import setup as powerline_setup
+  python3 powerline_setup()
+  python3 del powerline_setup
+endif
 set laststatus=2
 set noshowmode
 "/Powerline
@@ -149,7 +156,7 @@ autocmd FileType c,cpp,python autocmd BufWritePre <buffer> %s/\s\+$//e
 "Shortcuts
 autocmd FileType python,cpp nnoremap <F2> :cd ..\docu \| !doxygen \| cd ..\src<CR>
 autocmd FileType python,cpp nnoremap <F3> :!..\docu\html\index.html<CR>
-if has('windows')
+if has('win32')
   autocmd FileType python nnoremap <F4> :w \| !C:\Python27\python.exe %<CR>
   autocmd FileType python inoremap <F4> <ESC>:w \| !C:\Python27\python.exe %<CR>
   autocmd FileType python nnoremap <F5> :w \| !python %<CR>
