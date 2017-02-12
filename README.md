@@ -107,7 +107,7 @@ following config works great with neo-layout (http://neo-layout.org)
 
 `<C-Tab>` list all snippets for current language
 
-`<S-CR>` expand snippet
+`<C-RIGHT>` expand snippet
 
 `<Right>` after expand, jump forwart
 
