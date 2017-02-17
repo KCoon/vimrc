@@ -21,3 +21,6 @@
 	path = vimfiles/bundle/vim-snippets
 	url = https://github.com/honza/vim-snippets
 	
+[submodule "vimfiles/bundle/vim-commentary"]
+	path = vimfiles/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
