@@ -4,6 +4,7 @@ only my vim config
 
 <!-- vim-markdown-toc GFM -->
 * [Shortcuts](#shortcuts)
+  * [Help](#help)
   * [Python](#python)
   * [C++](#c)
 * [Commands](#commands)
@@ -15,10 +16,27 @@ only my vim config
   * [vim-markdown-toc](#vim-markdown-toc)
   * [UltiSnips](#ultisnips)
   * [vim-snippets](#vim-snippets)
+  * [vim-commentary](#vim-commentary)
 
 <!-- vim-markdown-toc -->
 
 ## Shortcuts
+
+
+### Help
+Modified mapping for help is located in vimfiles/ftplugin/help.vim. This mapping is from (http://vim.wikia.com/wiki/Learn_to_use_help#Simplify_help_navigation)
+
+`<CR>` follow link
+
+`<BS>` return from the last jump
+
+`<s>` next subject
+
+`<S>` previous subject
+
+`<o>` next option
+
+`<o>` previous option
 
 ### Python
 `<F2>` Doxygen
@@ -53,6 +71,7 @@ only my vim config
 ## Commands
 command          | description
 -----------------|------------
+Explorer         | Opens directory of current file in explorer and select file (windows only)
 Number           | Numbering lines of file
 Numberf <format> | Numbering lines of file with given format <br />e.g. Numberf "N%04d "
 Nonumber         | Removes numbering. Works only for digits only formats
@@ -69,8 +88,13 @@ A dark color scheme for vim (https://github.com/Blevs/vim-dzo)
 
 ### YouCompleteMe
 A code-completion engine for Vim (https://github.com/Valloric/YouCompleteMe)
+The standard keys `<Tab>` and `<S-Tab>` for selecting completion are remaped for compatibility with [UltiSnips](#ultisnips).
 
-To trigger semantic completion without language depending triggers like `.` or `->` press `<S-BAR>`.
+`<Down>` Scroll down in selection list
+`<Up>` Scroll up in selection list
+`<C-Bar>` Invoke selection list
+
+To trigger semantic completion without language depending triggers like `.` or `->` press `<C-Bar>`.
 
 ### fugitive
 Git wrapper for vim (https://github.com/tpope/vim-fugitive)
@@ -107,7 +131,7 @@ following config works great with neo-layout (http://neo-layout.org)
 
 `<C-Tab>` list all snippets for current language
 
-`<C-RIGHT>` expand snippet
+`<Tab>` expand snippet
 
 `<Right>` after expand, jump forwart
 
@@ -119,3 +143,14 @@ If you don't use neo (for whatever reason), use `<c-j>` and `<c-k>` in place of 
 
 Provided snippet files used by UltiSnips (https://github.com/honza/vim-snippets)
 
+### vim-commentary
+
+Language specific commenting.
+
+`<gcc>` (un)comment line
+
+`<gcap>` (un)comment paragraph
+
+`<gc>`  (un)comment selection in visual mode
+
+`<gcgc>` uncomment set of adjacent commented lines

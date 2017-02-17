@@ -18,6 +18,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'mzlogin/vim-markdown-toc'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-commentary'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -25,12 +26,16 @@ filetype plugin indent on    " required
 
 "Ultisnips
 "Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger='<C-RIGHT>'
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom_snippets"]
+let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsExpandTrigger='<Tab>'
 let g:UltiSnipsJumpForwardTrigger='<RIGHT>'
 let g:UltiSnipsJumpBackwardTrigger='<LEFT>'
 "/Ultisnips
 
 "YouCompleteMe
+let g:ycm_key_list_previous_completion=['<Up>']
+let g:ycm_key_list_select_completion=['<Down>']
 let g:enable_ycm_at_startup = 0
 if has('win32')
   let g:ycm_python_binary_path = 'C:\python36\python.exe'
@@ -49,7 +54,7 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 autocmd BufNewFile, BufRead *.cc setfiletype cpp
 "/YouCompleteMe
 
-
+let user="SL"
 set number
 set autochdir
 set ic
@@ -60,7 +65,9 @@ let mapleader = "\\"
 set mouse=a
 set autoread
 set spelllang=en_gb
-  
+set ssop-=options    " do not store global and local values in a session
+set ssop-=folds      " do not store folds
+
 "Tabs default
 set tabstop=2
 set softtabstop=2
@@ -139,6 +146,9 @@ set noshowmode
 command! -nargs=0 -range=% Number <line1>,<line2>s/^/\=printf('%0d ', line('.') - <line1>+1)
 command! -nargs=1 -range=% Numberf <line1>,<line2>s/^/\=printf(<args>, line('.') - <line1>+1)
 command! -nargs=0 -range=% Nonumber <line1>,<line2>s/^\s*\d*\s*/
+if has('win32')
+    command! Explorer !start explorer /select,%:p
+endif
 "/Commands
 
 "Auto commands
@@ -161,8 +171,8 @@ else
   autocmd FileType python inoremap <F5> <ESC>:w \| !python3 %<CR>
 endif
 nnoremap <F9> :YcmCompleter GetDoc<CR>
-autocmd FileType python nnoremap <F12> :silent !python -m autopep8 -i %<CR>
-autocmd FileType python nnoremap <S-F12> :!python -m autopep8 -d %<CR>
+autocmd FileType python nnoremap <F12> :w \| silent !python -m autopep8 -i %<CR>
+autocmd FileType python nnoremap <S-F12> :w \| !python -m autopep8 -d %<CR>
 "/Shortcuts
 
 "Snippets
