@@ -3,6 +3,7 @@ only my vim config
 
 
 <!-- vim-markdown-toc GFM -->
+* [Font](#font)
 * [Shortcuts](#shortcuts)
     * [Help](#help)
     * [Python](#python)
@@ -20,8 +21,26 @@ only my vim config
     * [vim-gitgutter](#vim-gitgutter)
     * [vim-airline/ vim-airline-themes](#vim-airline-vim-airline-themes)
     * [syntastic](#syntastic)
+=======
+	* [Help](#help)
+	* [Python](#python)
+	* [C++](#c)
+* [Commands](#commands)
+* [Plugins](#plugins)
+	* [Vundle](#vundle)
+	* [dzo](#dzo)
+	* [YouCompleteMe](#youcompleteme)
+	* [fugitive](#fugitive)
+	* [vim-markdown-toc](#vim-markdown-toc)
+	* [UltiSnips](#ultisnips)
+	* [vim-snippets](#vim-snippets)
+	* [vim-commentary](#vim-commentary)
+>>>>>>> 667e88f178e221dd71bddb1855c37d5b4c080505
 
 <!-- vim-markdown-toc -->
+
+## Font
+Monaco with extra characters for powerline. (https://gist.github.com/kevinis/c788f85a654b2d7581d8)
 
 ## Shortcuts
 
