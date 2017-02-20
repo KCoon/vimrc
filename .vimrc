@@ -2,7 +2,7 @@ set encoding=utf-8
 
 "Vundle
 set nocompatible        " be improved, required for vundle
-filetype off            " required for vundle 
+filetype off            " required for vundle
 if has('win32')
   set rtp+=$HOME/vimfiles/bundle/Vundle.vim
   call vundle#begin('$HOME/vimfiles/bundle/')
@@ -14,15 +14,25 @@ endif
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Blevs/vim-dzo'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mzlogin/vim-markdown-toc'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-commentary'
-
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'airblade/vim-gitgutter'
 call vundle#end()            " required
 filetype plugin indent on    " required
 "/Vundle
+
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme='molokai'
+set laststatus=2
+set noshowmode
+" /Airline
 
 "Ultisnips
 "Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -33,28 +43,36 @@ let g:UltiSnipsJumpForwardTrigger='<RIGHT>'
 let g:UltiSnipsJumpBackwardTrigger='<LEFT>'
 "/Ultisnips
 
+"Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['pylint']
+"/Syntastic
+
 "YouCompleteMe
 let g:ycm_key_list_previous_completion=['<Up>']
 let g:ycm_key_list_select_completion=['<Down>']
-let g:enable_ycm_at_startup = 0
+let g:enable_ycm_at_startup = 1
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycs_seed_identifiers_with_syntax = 1
 if has('win32')
   let g:ycm_python_binary_path = 'C:\python36\python.exe'
 else
   let g:ycm_python_binary_path = '/usr/bin/python3'
 endif
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_autoclose_preview_window_after_completion = 1
 if has('win32')
   let g:ycm_global_ycm_extra_conf = '~\vimfiles\.ycm_extra_conf.py'
 else
   let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 endif
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+"let g:syntastic_cpp_compiler = 'clang++'
+"let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 autocmd BufNewFile, BufRead *.cc setfiletype cpp
 "/YouCompleteMe
 
-let user="SL"
 set number
 set autochdir
 set ic
@@ -124,23 +142,9 @@ if has('win32')
   set renderoptions=type:directx,renmode:5
 else
   "set guifont=Monaco\ 11
-	set guifont=Monaco\ for\ Powerline\ 9
+  set guifont=Monaco\ for\ Powerline\ 9
 endif
 "/font
-
-"Powerline
-if has ('win32')
-  python from powerline.vim import setup as powerline_setup
-  python powerline_setup()
-  python del powerline_setup
-else
-  python3 from powerline.vim import setup as powerline_setup
-  python3 powerline_setup()
-  python3 del powerline_setup
-endif
-set laststatus=2
-set noshowmode
-"/Powerline
 
 "Commands
 command! -nargs=0 -range=% Number <line1>,<line2>s/^/\=printf('%0d ', line('.') - <line1>+1)
@@ -153,7 +157,7 @@ endif
 
 "Auto commands
 "remove trailing white s paces
-autocmd FileType c,cpp,python autocmd BufWritePre <buffer> %s/\s\+$//e
+autocmd FileType c,cpp,python,markdown autocmd BufWritePre <buffer> %s/\s\+$//e
 "Auto commands
 
 "Shortcuts

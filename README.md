@@ -4,19 +4,22 @@ only my vim config
 
 <!-- vim-markdown-toc GFM -->
 * [Shortcuts](#shortcuts)
-  * [Help](#help)
-  * [Python](#python)
-  * [C++](#c)
+    * [Help](#help)
+    * [Python](#python)
+    * [C++](#c)
 * [Commands](#commands)
 * [Plugins](#plugins)
-  * [Vundle](#vundle)
-  * [dzo](#dzo)
-  * [YouCompleteMe](#youcompleteme)
-  * [fugitive](#fugitive)
-  * [vim-markdown-toc](#vim-markdown-toc)
-  * [UltiSnips](#ultisnips)
-  * [vim-snippets](#vim-snippets)
-  * [vim-commentary](#vim-commentary)
+    * [Vundle](#vundle)
+    * [dzo](#dzo)
+    * [YouCompleteMe](#youcompleteme)
+    * [fugitive](#fugitive)
+    * [vim-markdown-toc](#vim-markdown-toc)
+    * [UltiSnips](#ultisnips)
+    * [vim-snippets](#vim-snippets)
+    * [vim-commentary](#vim-commentary)
+    * [vim-gitgutter](#vim-gitgutter)
+    * [vim-airline/ vim-airline-themes](#vim-airline-vim-airline-themes)
+    * [syntastic](#syntastic)
 
 <!-- vim-markdown-toc -->
 
@@ -110,14 +113,14 @@ fugitive cmd         | git cmd
 
 ### vim-markdown-toc
 
-Autogenerate table of contents in markdown files. (see https://github.com/mzlogin/vim-markdown-toc )
+    Autogenerate table of contents in markdown files. (see https://github.com/mzlogin/vim-markdown-toc )
 
-Place cursor to position where to append toc.
+    Place cursor to position where to append toc.
 
-`:GenTocGFM`   
-Generate table of contents in github flavoured markdown.
+    `:GenTocGFM`
+    Generate table of contents in github flavoured markdown.
 
-`:GenTocRedcarpet`  
+`:GenTocRedcarpet`
 Generate table of contents in redcarped style markdown.
 
 Toc will auto updated when saving file.
@@ -154,3 +157,15 @@ Language specific commenting.
 `<gc>`  (un)comment selection in visual mode
 
 `<gcgc>` uncomment set of adjacent commented lines
+
+### vim-gitgutter
+Shows git diff in gutter.
+
+`:GitGutterToggle` Toggles GitGutter signs
+
+### vim-airline/ vim-airline-themes
+Vim-airline provides a fancy status line similar to powerline. Contrary to airline, powerline has massive performance problems on Windowssystems especially with files in a git repository.
+
+
+### syntastic
+Syntax checker for a bunch of languages. For the C-language family YouCompleteMe has a own syntax checker. For Python syntastic is used. For Python check pylint needs to be located in PATH. If there's trouble installing pylint with pip under windows due to encoding failures, bash can be used for pip install instead of windows cmd.
