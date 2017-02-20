@@ -24,3 +24,6 @@
 [submodule "vimfiles/bundle/vim-commentary"]
 	path = vimfiles/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
+[submodule "vimfiles/bundle/vim-gitgutter"]
+	path = vimfiles/bundle/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
