@@ -78,6 +78,7 @@ Modified mapping for help is located in vimfiles/ftplugin/help.vim. This mapping
 
 ### LaTeX
 `<F3>` Compile and view
+
 `<F5>` Compile (XeLaTeX)
 
 ## Commands
