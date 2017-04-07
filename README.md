@@ -8,6 +8,7 @@ only my vim config
   * [Help](#help)
   * [Python](#python)
   * [C++](#c)
+  * [LaTeX](#latex)
 * [Commands](#commands)
 * [Plugins](#plugins)
   * [Vundle](#vundle)
@@ -74,6 +75,10 @@ Modified mapping for help is located in vimfiles/ftplugin/help.vim. This mapping
 `<F7>` Recompile
 
 `<F9>` GetDoc
+
+### LaTeX
+`<F3>` Compile and view
+`<F5>` Compile (XeLaTeX)
 
 ## Commands
 command          | description

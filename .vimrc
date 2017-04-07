@@ -176,6 +176,9 @@ endif
 nnoremap <F9> :YcmCompleter GetDoc<CR>
 autocmd FileType python nnoremap <F12> :w \| silent !python -m autopep8 -i %<CR>
 autocmd FileType python nnoremap <S-F12> :w \| !python -m autopep8 -d %<CR>
+"Latex
+autocmd FileType tex nnoremap <F5> :w \| !latexmk -xelatex %<CR>
+autocmd FileType tex nnoremap <F3> :w \| !latexmk -xelatex -pv %<CR>
 "/Shortcuts
 
 "Snippets
