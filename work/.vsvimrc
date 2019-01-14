@@ -1,0 +1,29 @@
+"definitions from https://fuqua.io/blog/2017/08/level-up-your-vsvim/
+map gd :vsc ReSharper.ReSharper_GotoDeclaration<cr>
+map gr :vsc ReSharper.ReSharper_FindUsages<cr>
+map gR :vsc ReSharper.ReSharper_ShowFindResults<cr>
+map gp :vsc Edit.PeekDefinition<cr>
+map gb :vsc ReSharper.ReSharper_GotoBase<cr>
+map gi :vsc ReSharper.ReSharper_GotoInheritors<cr>
+map gs :vsc View.SolutionExplorer<cr>
+map gf :vsc View.FindResults1<cr>
+map ge :vsc ReSharper.ReSharper_GotoRecentEdits<cr>
+map gt :vsc ReSharper.ReSharper_GotoText<cr>
+map gn :vsc ReSharper.ReSharper_GotoFile<cr>
+map gl :vsc ReSharper.ReSharper_LocateInSolutionOrAssemblyExplorer<cr>
+
+nnoremap <leader>rr :vsc ReSharper.ReSharper_Rename<cr>
+nnoremap <leader>bs :vsc Tools.ExternalCommand5<cr>
+nnoremap <leader>bd :vsc Tools.ExternalCommand4<cr>
+vmap <leader>re :vsc ReSharper.ReSharper_ExtractMethod<cr>
+
+nnoremap <leader>e :vsc ReSharper.ReSharper_GotoNextErrorInSolution<cr>
+nnoremap <leader>E :vsc ReSharper.ReSharper_GotoPrevErrorInSolution<cr>
+nnoremap <leader>w :vsc ReSharper.ReSharper_GotoNextHighlight<cr>
+nnoremap <leader>W :vsc ReSharper.ReSharper_GotoPrevHighlight<cr>
+nnoremap gc :vsc ReSharper.ReSharper_SilentCleanupCode<cr>
+
+"my own definitions
+nnoremap gcc :vsc ReSharper.ReSharper_LineComment<cr>
+vnoremap gc :vsc ReSharper.ReSharper_LineComment<cr>
+

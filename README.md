@@ -1,6 +1,9 @@
 # vimrc
 only my vim config
 
+## smartgit
+-f -d  ${leftFile} ${baseFile} ${rightFile} ${mergedFile}
+
 
 <!-- vim-markdown-toc GFM -->
 * [Font](#font)
