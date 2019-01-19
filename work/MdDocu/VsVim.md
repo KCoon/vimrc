@@ -1,5 +1,6 @@
 # VsVim
 
+![vimlogo](images/vimlogo.png?raw=true "Title")
 <img src="./images/vimlogo.png" width="50px" />
 
 ## Standard Vim
