@@ -1,5 +1,10 @@
 set encoding=utf-8
 
+augroup myvimrchooks
+    au!
+    autocmd bufwritepost .vimrc source ~/.vimrc
+augroup END
+
 "Vundle
 set nocompatible        " be improved, required for vundle
 filetype off            " required for vundle
@@ -13,19 +18,19 @@ endif
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Blevs/vim-dzo'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-syntastic/syntastic'
-Plugin 'tpope/vim-fugitive'
 Plugin 'mzlogin/vim-markdown-toc'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-commentary'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
 call vundle#end()            " required
 filetype plugin indent on    " required
 "/Vundle
+
 
 " Airline
 let g:airline_powerline_fonts = 1
@@ -51,26 +56,26 @@ let g:syntastic_check_on_wq = 0
 "/Syntastic
 
 "YouCompleteMe
-let g:ycm_key_list_previous_completion=['<Up>']
-let g:ycm_key_list_select_completion=['<Down>']
-let g:enable_ycm_at_startup = 1
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycs_seed_identifiers_with_syntax = 1
-if has('win32')
-  let g:ycm_python_binary_path = 'C:\python36\python.exe'
-else
-  let g:ycm_python_binary_path = '/usr/bin/python3'
-endif
-if has('win32')
-  let g:ycm_global_ycm_extra_conf = '~\vimfiles\.ycm_extra_conf.py'
-else
-  let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-endif
-"let g:syntastic_cpp_compiler = 'clang++'
-"let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-autocmd BufNewFile, BufRead *.cc setfiletype cpp
-"/YouCompleteMe
+"let g:ycm_key_list_previous_completion=['<Up>']
+"let g:ycm_key_list_select_completion=['<Down>']
+"let g:enable_ycm_at_startup = 1
+"let g:ycm_add_preview_to_completeopt = 1
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycs_seed_identifiers_with_syntax = 1
+"if has('win32')
+"  let g:ycm_python_binary_path = 'C:\python36\python.exe'
+"else
+"  let g:ycm_python_binary_path = '/usr/bin/python3'
+"endif
+"if has('win32')
+"  let g:ycm_global_ycm_extra_conf = '~\vimfiles\.ycm_extra_conf.py'
+"else
+"  let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+"endif
+""let g:syntastic_cpp_compiler = 'clang++'
+""let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+"autocmd BufNewFile, BufRead *.cc setfiletype cpp
+""/YouCompleteMe
 
 set number
 set autochdir
@@ -102,7 +107,7 @@ autocmd FileType python :set shiftwidth=4
 if has('gui_running')
   colorscheme dzo
 else
-  colorscheme evening
+  colorscheme elflord
 endif
 "/Colour
 
@@ -137,11 +142,10 @@ set guioptions-=L
 
 "font
 if has('win32')
-  set guifont=Monaco\ for\ Powerline:h9
+  set guifont=Monaco\ for\ Powerline:h11
   set renderoptions=type:directx,renmode:5
 else
-  "set guifont=Monaco\ 11
-  set guifont=Monaco\ for\ Powerline\ 9
+  set guifont=Monaco\ for\ Powerline\ 10
 endif
 "/font
 
@@ -157,11 +161,17 @@ endif
 "Auto commands
 "remove trailing white s paces
 autocmd FileType c,cpp,python,markdown autocmd BufWritePre <buffer> %s/\s\+$//e
+"load anaconda environment for python
+if has('gui_running')
+	autocmd FileType python let $PATH = '/home/sven/anaconda3/bin:'.$PATH
+	autocmd BufRead makefile let $PATH = '/home/sven/anaconda3/bin:'.$PATH
+endif
+autocmd BufEnter * silent! lcd %:p:h
 "Auto commands
 
 "Shortcuts
-autocmd FileType python,cpp nnoremap <F2> :cd ..\docu \| !doxygen \| cd ..\src<CR>
-autocmd FileType python,cpp nnoremap <F3> :!..\docu\html\index.html<CR>
+autocmd FileType python,cpp nnoremap <F2> :cd ../docu \| !doxygen \| cd ../src<CR>
+autocmd FileType python,cpp nnoremap <F3> :!xdg-open ../docu/html/index.html<CR>
 if has('win32')
   autocmd FileType python nnoremap <F4> :w \| !C:\Python27\python.exe %<CR>
   autocmd FileType python inoremap <F4> <ESC>:w \| !C:\Python27\python.exe %<CR>
@@ -170,8 +180,8 @@ if has('win32')
   autocmd FileType python nnoremap <F6> :w \| !ipython %<CR>
   autocmd FileType python inoremap <F6> <ESC>:w \| !ipython %<CR>
 else
-  autocmd FileType python nnoremap <F5> :w \| !python3 %<CR>
-  autocmd FileType python inoremap <F5> <ESC>:w \| !python3 %<CR>
+  autocmd FileType python nnoremap <F5> :w \| !~/anaconda3/bin/python %<CR>
+  autocmd FileType python inoremap <F5> <ESC>:w \| !~/anaconda3/bin/python %<CR>
 endif
 nnoremap <F9> :YcmCompleter GetDoc<CR>
 autocmd FileType python nnoremap <F12> :w \| silent !python -m autopep8 -i %<CR>
@@ -182,5 +192,5 @@ autocmd FileType tex nnoremap <F3> :w \| !latexmk -xelatex -pv %<CR>
 "/Shortcuts
 
 "Snippets
-autocmd BufNewFile *.py 0r ~/vimfiles/templates/skeleton.py
+	autocmd BufNewFile *.py 0r ~/.vim/templates/skeleton.py
 "/Snippets

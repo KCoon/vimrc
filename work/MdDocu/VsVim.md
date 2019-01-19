@@ -1,6 +1,6 @@
 # VsVim
 
-<img src="images/vimlogo.png" width="50px" />
+<img src="./images/vimlogo.png" width="50px" />
 
 ## Standard Vim
 
